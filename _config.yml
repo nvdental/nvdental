@@ -1,0 +1,32 @@
+# ----
+# Site
+
+title: North Vancouver Dental Clinic
+url: "https://nvdental.github.io"
+
+description: North Vancouver Dental Clinic
+footer:
+  address: "619 4th St East, North Vancouver, British Columbia V7L 1J9"
+
+# -----
+# Build
+
+defaults:
+  - scope:
+      path: "index.html"
+    values:
+      layout: "default"
+  - scope:
+      path: "contact.html"
+    values:
+      layout: page
+
+
+plugins:
+  - jekyll-sitemap
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - LICENCE

@@ -1,0 +1,45 @@
+---
+title: Contact Us
+heading: Contact Us
+description: Find our phone number, e-mail and address at the bottom of the page
+
+map:
+  latitude: 49.31040973460147
+  longitude: -123.05885601578821
+  address: "619 4th St East, North Vancouver, British Columbia V7L 1J9"
+  zoom: 13
+---
+<div class="map" id="map"></div>
+<script type="text/javascript">
+	window.mapData = {{ page.map | jsonify }};
+
+	function initMap() {
+		var myOptions = {
+			scrollwheel: false,
+			draggable: false,
+			panControl: false,
+			disableDefaultUI: true,
+			zoom: window.mapData.zoom,
+			maxZoom: window.mapData.zoom,
+			minZoom: window.mapData.zoom,
+			center: new google.maps.LatLng(window.mapData.latitude, window.mapData.longitude),
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+		map = new google.maps.Map(document.getElementById("map"), myOptions);
+		marker = new google.maps.Marker({
+			map: map,
+			position: new google.maps.LatLng(window.mapData.latitude, window.mapData.longitude),
+            url: "https://goo.gl/maps/WAYD9MWn4dd2RQnn9"
+		});
+
+		google.maps.event.addDomListener(window, "resize", function () {
+			map.setCenter(myOptions.center);
+		});
+
+        google.maps.event.addListener(marker, 'click', function() {
+            window.open(marker.url);
+        });
+        
+	}
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key={{ site.google_maps_javascript_api_key }}&amp;callback=initMap"></script>
