@@ -9,37 +9,7 @@ map:
   address: "619 4th St East, North Vancouver, British Columbia V7L 1J9"
   zoom: 13
 ---
-<div class="map" id="map"></div>
-<script type="text/javascript">
-	window.mapData = {{ page.map | jsonify }};
+<div class="map" id="map">
 
-	function initMap() {
-		var myOptions = {
-			scrollwheel: false,
-			draggable: false,
-			panControl: false,
-			disableDefaultUI: true,
-			zoom: window.mapData.zoom,
-			maxZoom: window.mapData.zoom,
-			minZoom: window.mapData.zoom,
-			center: new google.maps.LatLng(window.mapData.latitude, window.mapData.longitude),
-			mapTypeId: google.maps.MapTypeId.ROADMAP
-		};
-		map = new google.maps.Map(document.getElementById("map"), myOptions);
-		marker = new google.maps.Marker({
-			map: map,
-			position: new google.maps.LatLng(window.mapData.latitude, window.mapData.longitude),
-            url: "https://goo.gl/maps/WAYD9MWn4dd2RQnn9"
-		});
-
-		google.maps.event.addDomListener(window, "resize", function () {
-			map.setCenter(myOptions.center);
-		});
-
-        google.maps.event.addListener(marker, 'click', function() {
-            window.open(marker.url);
-        });
-        
-	}
-</script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key={{ site.google_maps_javascript_api_key }}&amp;callback=initMap"></script>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5202.457202536199!2d-123.0603153!3d49.3099543!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5486705a0f9ccfe9%3A0x6f12e15980a4180e!2sNorth%20Vancouver%20Dental%20Clinic!5e0!3m2!1sen!2sca!4v1640331247840!5m2!1sen!2sca" width="1000" height="600" style="border:0;margin:0; padding:0;" allowfullscreen="" loading="lazy"></iframe>
+</div>
